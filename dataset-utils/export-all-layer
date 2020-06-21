@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Export all layers from .xcf file in folder
+
+for file in ./dataset/*.xcf
+do
+  fbname=$(basename "$file" .xcf)
+  foldername='dataset-preprocess'
+  echo "$fbname"
+  mkdir "$foldername/$fbname"
+  gimp -i -b "(sg-save-layer-cmd \"dataset/$fbname.xcf\" \"*\" \"$foldername/$fbname\")" -b '(gimp-quit 0)'
+done
