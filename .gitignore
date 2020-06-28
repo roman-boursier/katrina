@@ -1,2 +1,3 @@
 train/datasets-training-backup/*
 train/datasets/*
+app/node_modules
