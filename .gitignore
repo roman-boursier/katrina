@@ -1,2 +1,2 @@
-./train/datasets-training-backup
-./datasets
+train/datasets-training-backup/*
+train/datasets/*
