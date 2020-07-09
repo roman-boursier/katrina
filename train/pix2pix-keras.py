@@ -226,7 +226,8 @@ def train(d_model, g_model, gan_model, dataset, n_epochs=100, n_batch=4):
 		f.close()
 
 		# summarize model performance
-		if (i+1) % (bat_per_epo * 10) == 0:
+		#if (i+1) % (bat_per_epo * 10) == 0:
+		if i == 200:
 			summarize_performance(i, g_model, dataset)
 
 # load image data
