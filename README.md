@@ -14,10 +14,10 @@ https://github.com/s9xie/hed</br>
 https://github.com/eriklindernoren/Keras-GAN/blob/master/pix2pix/pix2pix.py<br>
 
 <strong>GauGan</strong><br>
-https://github.com/NVlabs/SPADE
+https://github.com/NVlabs/SPADE<br>
 
 <strong>CycleGAN and pix2pix in PyTorch</strong><br>
-https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
+https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix<br>
 
 
 
