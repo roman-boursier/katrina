@@ -190,11 +190,11 @@ def summarize_performance(step, g_model, dataset, n_samples=3):
 		pyplot.imshow(X_realB[i])
 	# save plot to file
 	filename1 = 'plot_%06d.png' % (step+1)
-	pyplot.savefig(filename1)
+	pyplot.savefig(fullPath + filename1)
 	pyplot.close()
 	# save the generator model
 	filename2 = 'model_%06d.h5' % (step+1)
-	g_model.save(filename2)
+	g_model.save(fullPath + filename2)
 	print('>Saved: %s and %s' % (filename1, filename2))
 
 # train pix2pix models
@@ -208,6 +208,12 @@ def train(d_model, g_model, gan_model, dataset, n_epochs=100, n_batch=4):
 	# calculate the number of training iterations
 	n_steps = bat_per_epo * n_epochs
 	# manually enumerate epochs
+
+	d_loss1_arr = []
+	d_loss2_arr = []
+	g_loss_arr = []
+	num_train_arr = []
+	numEpoch = 1
 	for i in range(n_steps):
 		# select a batch of real samples
 		[X_realA, X_realB], y_real = generate_real_samples(dataset, n_batch, n_patch)
@@ -221,18 +227,36 @@ def train(d_model, g_model, gan_model, dataset, n_epochs=100, n_batch=4):
 		g_loss, _, _ = gan_model.train_on_batch(X_realA, [y_real, X_realB])
 		# summarize performance
 
-		f = open("output.txt", "a")
-		print('>%d, d1[%.3f] d2[%.3f] g[%.3f]' % (i+1, d_loss1, d_loss2, g_loss), file=f)
-		f.close()
+		print('>%d, d1[%.3f] d2[%.3f] g[%.3f]' % (i+1, d_loss1, d_loss2, g_loss))
+		d_loss1_arr.append(d_loss1)
+		d_loss2_arr.append(d_loss2)
+		g_loss_arr.append(g_loss)
+		num_train_arr.append(i+1)
+		
 
 		# summarize model performance
-		#if (i+1) % (bat_per_epo * 10) == 0:
-		if i == 200:
+		if (i+1) % (bat_per_epo * 10) == 0:
+			pyplot.plot(num_train_arr, d_loss1_arr, label="d_loss1")
+			pyplot.plot(num_train_arr, d_loss2_arr, label="d_loss2")
+			pyplot.plot(num_train_arr, g_loss_arr, label="g_loss")
+			pyplot.xlabel("epochs")
+			pyplot.ylabel("d_loss")
+			pyplot.legend()
+			pyplot.savefig(fullPath + 'test.png', dpi=200)
+			pyplot.close()
+
+			numEpoch = numEpoch + 1
 			summarize_performance(i, g_model, dataset)
 
+basePath = '/content/drive/My Drive/Colab Notebooks/'
+baseFolerName = 'ds-11-abs-hed/'
+fullPath = basePath + baseFolerName
+
 # load image data
-dataset = load_real_samples('dataset_256.npz')
+dataset = load_real_samples(fullPath + 'datasets.npz')
 print('Loaded', dataset[0].shape, dataset[1].shape)
+
+# print(dataset.shape)
 
 # define input shape based on the loaded dataset
 image_shape = dataset[0].shape[1:]
