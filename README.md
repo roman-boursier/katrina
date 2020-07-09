@@ -7,6 +7,7 @@ The model generated will have to adopt the chosen stylisation but also interpret
 
 
 <h1>Sate of art</h1>
+<br>
 <strong>Holistically-Nested Edge Detection</strong><br>
 https://github.com/s9xie/hed</br>
 
