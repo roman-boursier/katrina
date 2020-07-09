@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Export all layers from .xcf file in folder
+for file in ./dataset-final/input/*.png 
+do
+  fbname=$(basename "$file" .png)
+  convert $file -background white -flatten -quality 100 $fbname.jpg
+done
