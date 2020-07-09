@@ -1,8 +1,8 @@
 # katrina
 
-As part of our study project, we would like to use a model of Deep Learning, to produce a capable rendering engineto adopt a typical stylisation such as Chinese painting. In a first time, it will propose a model of abstraction of the paintings
-selected as a learning base and to use the couple painting original / abstraction for the drive. Subsequently, a motor abstractions rendering will be connected to the deep network that will produce a painting on the basis of abstraction.
-The model generated will have to adopt the chosen stylisation but also interpret the original abstraction.
+Nous souhaitons utiliser un modèle de Deep Learning, afin de produire un moteur de rendu capable d’adopter une stylisation « type » telle que la peinture chinoise. Dans un premier temps, il s’agira de proposer un modèle d’abstraction des peintures sélectionnées comme base d’apprentissage et d’utiliser le couple « peinture originale » / « abstraction » pour l’entraînement. Par la suite, un moteur de rendu d’abstractions sera connecté au réseau profond qui produira une peinture sur la base de l’abstraction.
+
+Le modèle généré devra d'une part adopter la stylisation retenue mais aussi interpréter l'abstraction d'origine.
 
 
 
